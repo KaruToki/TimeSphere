@@ -1,0 +1,70 @@
+/* Main Title Styling */
+.main-title {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; /* Modern font stack */
+    font-size: 3rem; /* Large font size */
+    font-weight: 700; /* Bold for emphasis */
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #ff3e7e, #ff7e00, #ffaa00, #0099cc, #33cc66); /* Vibrant gradient colors */
+    -webkit-background-clip: text; /* Vendor-prefixed for Safari */
+    background-clip: text; /* Standard property */
+    color: transparent; /* Makes text transparent to show gradient */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 255, 255, 0.5); /* Glowing and subtle shadow */
+    animation: fadeIn 2.5s ease-in-out, textGlow 1.5s ease-in-out infinite alternate, gradientMove 4s linear infinite; /* Adding gradient animation */
+}
+
+/* Dark Mode Specific Styling */
+.dark-mode .main-title {
+    background: linear-gradient(45deg, #d7d7d7, #a1a1a1, #858585, #7b7b7b, #585858); /* Muted gradient colors for dark mode */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.4); /* Sharper glowing effect */
+}
+
+/* FadeIn Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Text Glow Animation */
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.7), 0 0 45px rgba(0, 255, 255, 0.8);
+    }
+}
+
+/* Gradient Movement Animation */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem; /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem; /* Further adjust for mobile */
+    }
+}

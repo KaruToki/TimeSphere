@@ -1,0 +1,331 @@
+/* Basic styling for day cells with events */
+.day-cell.event {
+    position: relative;
+    display: block;
+    overflow: visible;
+    padding: 15px 10px; /* More padding for better spacing */
+    background-color: #f9fafb; /* Light gradient background */
+    min-height: 70px; /* Increased height for better content display */
+    border: 2px solid #ff6f61; /* Softer border for a modern look */
+    border-radius: 12px; /* Slightly larger border radius for a smoother, more modern feel */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Dual shadow for depth */
+    transition: all 0.3s ease-in-out, box-shadow 0.2s ease; /* Smooth transition for box shadow and all other properties */
+    cursor: pointer;
+}
+
+/* Add a subtle animated gradient */
+.day-cell.event::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 103, 71, 0.4), rgba(255, 103, 71, 0.1));
+    border-radius: 12px;
+    z-index: -1; /* Put gradient behind the content */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+/* Basic event title styling */
+.event-title {
+    font-size: 0.8em;
+    color: #333;
+    margin-top: 5px;
+    display: block; /* Each event title is displayed on a new line */
+    padding: 2px 5px;
+    border-radius: 3px;
+    overflow-y: auto; /* Allow scrolling if needed */
+    max-height: 40px; /* Limit the height of the event title */
+    line-height: 1.2em; /* Line height for better readability */
+    
+}
+
+/* Styling for multiple events in a single day */
+.day-cell .event-title.multiple-events {
+    font-size: 0.7em; /* Smaller font for multiple events */
+    margin-top: 3px;
+    line-height: 1.2em;
+    overflow-y: auto; /* Allow scrolling if needed */
+}
+
+/* Event categories with different background colors */
+.event-category-1 {
+    background-color: #ffcccc; /* Light red */
+}
+
+.event-category-2 {
+    background-color: #ccffcc; /* Light green */
+}
+
+.event-category-3 {
+    background-color: #ccccff; /* Light blue */
+}
+
+/* Basic styling for the calendar days (Sun, Mon, Tue, etc.) */
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    border: 1px solid #000000; /* Light gray border */
+
+}
+
+/* Basic styling for each individual day name */
+.calendar-days span {
+    font-size: 1em;
+    color: #333;
+    padding: 5px 0;
+}
+
+/* Highlight weekend days (Saturday and Sunday) */
+.calendar-days span:nth-child(1),
+.calendar-days span:nth-child(7) {
+    color: red; /* Red for Sundays and Saturdays */
+}
+
+/* Add hover effect for the day names */
+.calendar-days span:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+/* Prevent hover styles from overriding event day cells */
+.day-cell.event:hover {
+    background-color: #f5f1f1; /* Slightly darker background on hover for emphasis */
+    border-color: #ff5733; /* Brighter border color on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    transform: translateY(-4px); /* Subtle movement effect on hover */
+}
+
+/* Animate the gradient on hover */
+.day-cell.event:hover::before {
+    opacity: 1; /* Fade in gradient on hover */
+}
+
+/* Animate the gradient on hover */
+.day-cell.event:hover::before {
+    opacity: 1; /* Fade in gradient on hover */
+}
+
+.calendar .day-cell.event:hover {
+    background-color: #007bff; /* Blue on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Highlight the current date */
+.calendar .current-date {
+    background-color: #ff6347; /* Light red background for today */
+    color: white; /* White text for today */
+    font-weight: bold; /* Bold font for today */
+}
+
+/* Add hover effect for the day names */
+.calendar-days span:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.event-category-meeting {
+    background-color: #f0f8ff; /* Alice blue for Meeting */
+    color: #000;
+}
+
+.event-category-training {
+    background-color: #90ee90; /* Light green for Training */
+    color: #000;
+}
+
+.event-category-orientation {
+    background-color: #ffebcd; /* Blanched almond for Orientation */
+    color: #000;
+}
+
+.event-category-workshop {
+    background-color: #ffcc99; /* Light coral for Workshop */
+    color: #000;
+}
+
+.event-category-awarding {
+    background-color: #ffd700; /* Gold for Awarding */
+    color: #000;
+}
+
+.event-category-wellness {
+    background-color: #98fb98; /* Pale green for Wellness */
+    color: #000;
+}
+
+.event-category-other {
+    background-color: #d3d3d3; /* Light grey for Other */
+    color: #000;
+}
+
+/* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS */
+/* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS */
+/* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS */
+/* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS */
+/* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS */
+/* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS *//* HERE IS THE DARK MODE VERSIONS */
+
+/* Dark Mode: Basic styling for day cells with events */
+.dark-mode .day-cell.event {
+    position: relative;
+    display: block;
+    overflow: visible;
+    padding: 15px 10px; /* More padding for better spacing */
+    background-color: #444; /* Darker background for event cells */
+    min-height: 70px; /* Increased height for better content display */
+    border: 2px solid #ff6f61; /* Softer border for a modern look */
+    border-radius: 12px; /* Slightly larger border radius for a smoother, more modern feel */
+    box-shadow: 0 6px 10px rgba(255, 255, 255, 0.1), 0 1px 3px rgba(255, 255, 255, 0.08); /* Dual shadow for depth */
+    transition: all 0.3s ease-in-out, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+/* Dark Mode: Add a subtle animated gradient */
+.dark-mode .day-cell.event::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 103, 71, 0.4), rgba(255, 103, 71, 0.1));
+    border-radius: 12px;
+    z-index: -1; /* Put gradient behind the content */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Dark Mode: Event title styling */
+.dark-mode .event-title {
+    font-size: 0.8em;
+    color: #fff; /* White text for visibility on dark background */
+    margin-top: 5px;
+    display: block; /* Each event title is displayed on a new line */
+    padding: 2px 5px;
+    border-radius: 3px;
+    overflow-y: auto;
+    max-height: 40px;
+    line-height: 1.2em;
+}
+
+/* Dark Mode: Styling for multiple events in a single day */
+.dark-mode .day-cell .event-title.multiple-events {
+    font-size: 0.7em;
+    margin-top: 3px;
+    line-height: 1.2em;
+    overflow-y: auto;
+}
+
+/* Dark Mode: Event categories with different background colors */
+.dark-mode .event-category-1 {
+    background-color: #ff6666; /* Light red */
+}
+
+.dark-mode .event-category-2 {
+    background-color: #66cc66; /* Light green */
+}
+
+.dark-mode .event-category-3 {
+    background-color: #6666cc; /* Light blue */
+}
+
+/* Dark Mode: Basic styling for the calendar days (Sun, Mon, Tue, etc.) */
+.dark-mode .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    border: 1px solid #555; /* Darker border */
+    color: aliceblue;
+}
+
+/* Dark Mode: Basic styling for each individual day name */
+.dark-mode .calendar-days span {
+    font-size: 1em;
+    color: #fff; /* White text for day names */
+    padding: 5px 0;
+}
+
+/* Dark Mode: Highlight weekend days (Saturday and Sunday) */
+.dark-mode .calendar-days span:nth-child(1),
+.dark-mode .calendar-days span:nth-child(7) {
+    color: #ff5733; /* Bright red for weekends */
+}
+
+/* Dark Mode: Add hover effect for the day names */
+.dark-mode .calendar-days span:hover {
+    background-color: #666; /* Darker hover effect */
+    cursor: pointer;
+}
+
+/* Dark Mode: Prevent hover styles from overriding event day cells */
+.dark-mode .day-cell.event:hover {
+    background-color: #555; /* Darker background on hover for emphasis */
+    border-color: #ff5733; /* Brighter border color on hover */
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(255, 255, 255, 0.15); /* Stronger shadow on hover */
+    transform: translateY(-4px); /* Subtle movement effect on hover */
+}
+
+/* Dark Mode: Animate the gradient on hover */
+.dark-mode .day-cell.event:hover::before {
+    opacity: 1; /* Fade in gradient on hover */
+}
+
+/* Dark Mode: Highlight the current date */
+.dark-mode .calendar .current-date {
+    background-color: #ff6347; /* Light red background for today */
+    color: white; /* White text for today */
+    font-weight: bold; /* Bold font for today */
+}
+
+/* Dark Mode: Add hover effect for the day names */
+.dark-mode .calendar-days span:hover {
+    background-color: #666; /* Darker background on hover */
+    cursor: pointer;
+}
+
+/* Dark Mode: Event categories with dark mode counterparts */
+.dark-mode .event-category-meeting {
+    background-color: #2e3d61; /* Dark blue for Meeting */
+    color: #fff;
+}
+
+.dark-mode .event-category-training {
+    background-color: #336633; /* Dark green for Training */
+    color: #fff;
+}
+
+.dark-mode .event-category-orientation {
+    background-color: #5c3e2a; /* Dark brown for Orientation */
+    color: #fff;
+}
+
+.dark-mode .event-category-workshop {
+    background-color: #cc6655; /* Dark coral for Workshop */
+    color: #fff;
+}
+
+.dark-mode .event-category-awarding {
+    background-color: #b38f00; /* Dark gold for Awarding */
+    color: #fff;
+}
+
+.dark-mode .event-category-wellness {
+    background-color: #4b6c4a; /* Dark green for Wellness */
+    color: #fff;
+}
+
+.dark-mode .event-category-other {
+    background-color: #5e5e5e; /* Dark grey for Other */
+    color: #fff;
+}

@@ -1,0 +1,81 @@
+/* Enhanced Dropdown Styles */
+.styled-dropdown {
+    padding: 12px 16px; /* Increased padding for better touch target */
+    border: 2px solid #ccc; /* Slightly thicker border for better definition */
+    border-radius: 8px; /* More rounded corners */
+    background-color: #fff; /* White background for clean design */
+    font-size: 16px;
+    color: #333;
+    margin: 5px;
+    width: auto;
+    display: inline-block;
+    transition: all 0.3s ease-in-out; /* Smooth transition for changes */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Dark Mode - Dropdown Style */
+.dark-mode .styled-dropdown {
+    background-color: #333; /* Dark background for dark mode */
+    color: #ddd; /* Lighter text for contrast */
+    border-color: #555; /* Darker border for dark mode */
+}
+
+/* Dark Mode - Focus State */
+.dark-mode .styled-dropdown:focus {
+    border-color: #1e90ff; /* Light blue border for dark mode focus */
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.4); /* Blue glow effect for focus */
+}
+
+/* Dark Mode - Hover Effect */
+.dark-mode .styled-dropdown:hover {
+    background-color: #444; /* Darker background on hover */
+}
+
+/* Dark Mode - Option List Enhancement */
+.dark-mode .styled-dropdown option {
+    background-color: #333; /* Dark background for options */
+    color: #ddd; /* Lighter text color for contrast */
+}
+
+/* Dark Mode - Hover Effect for Options */
+.dark-mode .styled-dropdown option:hover {
+    background-color: #1e90ff; /* Blue background on hover */
+    color: #fff; /* White text for better readability */
+}
+
+/* Focus State - when dropdown is selected */
+.styled-dropdown:focus {
+    border-color: #007bff; /* Focus border color */
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4); /* Blue glow effect for focus */
+}
+
+/* Hover Effect */
+.styled-dropdown:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+    cursor: pointer; /* Pointer cursor for interaction */
+}
+
+/* Option List Enhancement */
+.styled-dropdown option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    border: none;
+    transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transition on hover */
+}
+
+/* Hover Effect for Options */
+.styled-dropdown option:hover {
+    background-color: #007bff; /* Change option background on hover */
+    color: #fff; /* Change text color for contrast */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .styled-dropdown {
+        font-size: 14px; /* Slightly smaller font on mobile */
+        padding: 10px 14px; /* Adjust padding for mobile view */
+    }
+}

@@ -6,7 +6,6 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow: scroll;
 }
 
 /* Top bar styles */
@@ -14,9 +13,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px; /* Fixed height of the top bar */
-    padding: 0 20px;
-    background-color: #333; /* Adjust as needed */
+    background-color: #f0f0f0; /* Make the background transparent */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px; /* Set a fixed height for the top bar */
 }
 
 /* Main container to hold sidebar and main content */
@@ -49,22 +53,28 @@ body {
 .user-card {
     display: flex;
     align-items: center;
+    background-color: #fff;
+    padding: 1px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align:right;
+    flex-grow: 1; /* Allow the user card to grow and fill available space */
+    margin-left: 20px; /* Add some space between the burger icon and the user card */
+}
+
+.user-card:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
 }
 
 .user-info {
     display: flex;
     flex-direction: column;
-    margin: 0;
-    justify-content: space-between;
-    height: 100%;
-    font-size: calc(10px + 0.5vw); /* Auto-resize font size based on viewport */
-    line-height: 1.2; /* Adjust line spacing for readability */
-    max-width: 200px; /* Optional: Limit width to prevent overflowing */
-    flex-grow: 1; /* Allow the user info to take up available space */
+    margin-bottom: 20px;
 }
 
 .user-info p {
-    margin: 2px 0; /* Adjust space between paragraphs */
+    margin: 5px 0;
     overflow: hidden;
     text-overflow: ellipsis; /* Truncate overflow text with ellipsis */
     white-space: nowrap; /* Prevent text wrapping */
@@ -86,6 +96,17 @@ body {
     white-space: nowrap; /* Prevent wrapping */
 }
 
+.dark-mode .user-info {
+    color: whitesmoke; /* Change text color to white in dark mode */
+}
+
+.dark-mode .user-info:hover {
+    background-color: #444; /* Lighten the background color on hover in dark mode */
+    color: #007BFF; /* Ensure text color remains white */
+}
+.user-info:hover {
+    color: #007BFF; /* Change text color to blue */
+}
 
 /* Burger icon */
 #burger-icon {
@@ -102,44 +123,88 @@ body {
     color: #007BFF;
 }
 
-/* Navigation buttons */
-nav button {
-    display: block;
-    width: 100%;
+/* Navigation dropdown */
+
+nav select {
+    background-color: #e0e0e0; /* Change this to your desired background color */
+    color: #333; /* Optional: Change the text color */
     padding: 10px;
-    margin-bottom: 10px;
-    background-color: #007BFF;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 10px;
+}
+
+nav select:hover {
+    background-color: #d0d0d0; /* Optional: Change the background color on hover */
+}
+
+.dark-mode nav select {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode nav select:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+/* Navigation buttons */
+/* General Button Styling */
+nav button {
+    display: block;
+    width: 100%;
+    padding: 12px 16px; /* Adjusted padding for a better size */
+    margin-bottom: 12px; /* Increased margin for better spacing */
+    background-color: #007BFF; /* Primary blue color */
+    color: white;
+    font-size: 1rem; /* Slightly larger font for readability */
+    border: none;
+    border-radius: 8px; /* More rounded corners */
+    cursor: pointer;
+    text-transform: uppercase; /* Making text uppercase for emphasis */
+    font-weight: 600; /* Semi-bold font for more impact */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
 }
 
 nav button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
 }
 
-/* Logout button */
+nav button:active {
+    transform: translateY(1px); /* Button press effect */
+}
+
+/* Logout Button Styling */
 .logout-button {
     position: absolute;
     bottom: 20px;
     width: calc(100% - 40px); /* Adjust width to account for padding */
-    padding: 10px;
-    background-color: #ff4d4d;
+    padding: 12px 16px;
+    background-color: #ff4d4d; /* Red background for logout */
     color: white;
+    font-size: 1rem;
+    font-weight: 600;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Rounded corners */
     cursor: pointer;
+    text-transform: uppercase; /* Uppercase text for consistency */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .logout-button:hover {
-    background-color: #cc0000;
+    background-color: #cc0000; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.logout-button:active {
+    transform: translateY(1px); /* Button press effect */
 }
 
 /* Main content container */
 .main-content-container {
     flex-grow: 1;
-    margin-left: 250px; /* Adjust margin to account for sidebar */
+    margin-left: 275px; /* Adjust margin to account for sidebar */
     margin-bottom: 60px; /* Adjust to match the height of the footer */
     transition: margin-left 0.3s ease;
     overflow-y: auto;
@@ -154,9 +219,24 @@ nav button:hover {
     padding: 20px;
 }
 
-.calendar-container {
-    margin-bottom: 20px;
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for each day of the week */
+    gap: 8px; /* Slightly larger space between cells */
+    padding: 20px;
+    border: 1px solid #ddd; /* Subtle border around the entire calendar */
+    border-radius: 10px; /* Rounded corners for a softer look */
+    background-color: #fafafa; /* Light background color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow to give depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
 }
+
+/* Hover effect to make the calendar stand out */
+.calendar:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
 
 .calendar-header {
     display: flex;
@@ -165,11 +245,12 @@ nav button:hover {
     margin-bottom: 10px;
 }
 
-.calendar {
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
+/* Calendar container */
+.calendar-container {
+    margin-bottom: 20px;
 }
+
+
 
 .event-container {
     margin-top: 20px;
@@ -180,6 +261,27 @@ nav button:hover {
     padding: 10px;
     border-radius: 5px;
 }
+
+/* Dark Mode: Event container styling */
+.dark-mode .event-container {
+    margin-top: 20px;
+}
+
+/* Dark Mode: Event list styling */
+.dark-mode .event-list {
+    border: 1px solid #555; /* Darker border color */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #333; /* Darker background color */
+    color: #fff; /* White text for contrast */
+}
+
+/* Dark Mode: Event list hover effect */
+.dark-mode .event-list:hover {
+    border-color: #777; /* Slightly brighter border on hover */
+    background-color: #444; /* Darker background on hover */
+}
+
 
 /* Footer styles */
 footer {
@@ -203,41 +305,24 @@ footer {
     background-color: #444;
 }
 
+/* Dark Mode Specific Button Styling */
 .dark-mode nav button {
-    background-color: #555;
+    background-color: #333; /* Darker background for dark mode */
+    color: #ddd; /* Lighter text color for dark mode */
 }
 
 .dark-mode nav button:hover {
-    background-color: #333;
+    background-color: #444; /* Slightly lighter dark shade on hover */
 }
 
+/* Dark Mode Specific Logout Button Styling */
 .dark-mode .logout-button {
-    background-color: #ff4d4d;
+    background-color: #ff4d4d; /* Same red for logout in dark mode */
 }
 
 .dark-mode .logout-button:hover {
-    background-color: #cc0000;
+    background-color: #cc0000; /* Darker red for hover in dark mode */
 }
-
-/* User Card Styling */
-.user-card {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    padding: 1px 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    text-align:right;
-    flex-grow: 1; /* Allow the user card to grow and fill available space */
-    margin-left: 20px; /* Add some space between the burger icon and the user card */
-}
-
-.user-card:hover {
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
-}
-
-
 
 /* User Name */
 .user-name {
@@ -287,4 +372,165 @@ footer {
     .user-role {
         font-size: 14px;
     }
+}
+
+.calendar  {
+    background-color:rgba(2, 0, 95, 0.08); /* Blue background on hover */
+    color: #fff; /* White text on hover */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.day-cell:hover {
+    background-color: #f4f4f4; /* Light background change on hover */
+    color: #007430; /* Change the color of the day number */
+    border-color: #005d2e; /* Darker border color on hover */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    transform: scale(1.05); /* Slight scale effect for a more interactive feel */
+}
+
+.day-cell {
+    display: flex;
+    justify-content: center; /* Center the day number */
+    align-items: center; /* Vertically center the content */
+    background-color: #fff; /* White background for clean look */
+    border-radius: 12px; /* Slightly more rounded corners for a smoother look */
+    padding: 15px; /* Add a little more space for the content */
+    height: 120px; /* A bit taller for better readability */
+    font-size: 18px; /* Increase font size for clarity */
+    font-weight: 600; /* Slightly lighter than bold to make it more elegant */
+    color: #333; /* Default text color for day numbers */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    border: 1px solid #007430; /* Solid, slightly darker border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    cursor: pointer; /* Indicate that the cell is interactive */
+}
+
+/* Focus effect when the cell is focused (for accessibility) */
+.day-cell:focus {
+    outline: none;
+    border-color: #005d2e; /* Darker border on focus */
+    box-shadow: 0 0 0 3px rgba(0, 117, 47, 0.3); /* Glowing outline for focus */
+}
+
+.day-cell.weekend {
+    background-color: #f2f2f2; /* Lighter background for weekends */
+    font-weight: bold;
+    color: #d9534f; /* Red color for weekends */
+}
+
+/* Dark Mode: Hover Effects for Day Cells */
+.dark-mode .day-cell:hover {
+    background-color: #444; /* Darker background change on hover */
+    color: #00b33c; /* Change the color of the day number to a bright green */
+    border-color: #00b33c; /* Brighter border color on hover */
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2); /* Stronger shadow on hover */
+    transform: scale(1.05); /* Slight scale effect for a more interactive feel */
+}
+
+/* Dark Mode: Regular Day Cells */
+.dark-mode .day-cell {
+    display: flex;
+    justify-content: center; /* Center the day number */
+    align-items: center; /* Vertically center the content */
+    background-color: #333; /* Dark background for day cells */
+    border-radius: 12px; /* Slightly more rounded corners for a smoother look */
+    padding: 15px; /* Add a little more space for the content */
+    height: 120px; /* A bit taller for better readability */
+    font-size: 18px; /* Increase font size for clarity */
+    font-weight: 600; /* Slightly lighter than bold to make it more elegant */
+    color: #fff; /* White text color for day numbers */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    border: 1px solid #444; /* Solid, slightly lighter border */
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05); /* Subtle shadow for depth */
+    cursor: pointer; /* Indicate that the cell is interactive */
+}
+
+/* Focus effect when the cell is focused (for accessibility) */
+.dark-mode .day-cell:focus {
+    outline: none;
+    border-color: #00b33c; /* Brighter border on focus */
+    box-shadow: 0 0 0 3px rgba(0, 179, 60, 0.3); /* Glowing outline for focus */
+}
+
+/* Dark Mode: Weekend Day Cells */
+.dark-mode .day-cell.weekend {
+    background-color: #444; /* Darker background for weekends */
+    font-weight: bold;
+    color: #f5c6cb; /* Lighter red color for weekends */
+}
+
+.current-date {
+    background-color: blue;
+    color: white;
+    border: 2px solid blue;
+}
+
+/* Different highlight color for the current date if it has events */
+.current-date-event {
+    background-color: purple;
+    color: white;
+    border: 2px solid purple;
+}
+
+.day-cell.current-day {
+    background-color: #ffeb3b; /* Bright yellow background for today */
+    color: #000; /* Dark text color for contrast */
+    font-weight: 700; /* Make it stand out more */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow to highlight the current day */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Responsive Calendar for Smaller Screens */
+@media (max-width: 768px) {
+    .calendar {
+        grid-template-columns: repeat(7, 1fr); /* Keep the 7 columns */
+        gap: 3px; /* Reduce gap for smaller screens */
+    }
+
+    .day-cell {
+        font-size: 14px; /* Slightly smaller font size */
+        padding: 8px; /* Reduced padding */
+        height: 50px; /* Smaller height for smaller screens */
+    }
+}
+
+/* Empty day cell */
+.empty {
+    background-color: transparent;
+    border: none;
 }

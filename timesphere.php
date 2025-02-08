@@ -18,24 +18,47 @@ $division = $_SESSION['division'] ?? 'N/A';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Sphere</title>
     <link rel="stylesheet" href="css designs/timesphere.css">
-    <script src="Script Files/timesphere.js" defer></script> <!-- Correct path to the JS file -->
+    <link rel="stylesheet" href="css designs/Main_Title.css"> <!-- Main title CSS -->
+    <link rel="stylesheet" href="css designs/calendar_events.css"> <!-- Calendar and event styling -->
+    <link rel="stylesheet" href="Styles/styles.css"> <!-- General styles -->
+    <script src="Script Files/timesphere.js" defer></script> <!-- JS for functionality -->
+    <script src="Script Files/calendar_events.js" defer></script> <!-- JS for calendar -->
 </head>
 <body>
     <div class="top-bar">
         <button id="burger-icon" onclick="toggleSidebar()">☰</button>
-                    <div class="user-info">
-                        <p class="user-name"><?php echo $firstname . ' ' . $lastname; ?></p>
-                        <p class="user-email"><?php echo strtolower(str_replace(' ', '', $firstname) . '.' . strtolower($lastname) . '@deped.gov.ph'); ?></p>
-                        <p class="user-division"><?php echo $division; ?></p>
-                        <p class="user-role"><?php echo $role; ?></p>
-                    </div>
-    
+        <h1 class="main-title">DepEd CAR TimeSphere</h1>
     </div>
     <div class="main-container">
         <div class="sidebar" id="sidebar">
+            <div class="user-info">
+                <p class="user-name"><?php echo $firstname . ' ' . $lastname; ?></p>
+                <p class="user-email"><?php echo strtolower(str_replace(' ', '', $firstname) . '.' . strtolower($lastname) . '@deped.gov.ph'); ?></p>
+                <p class="user-division"><?php echo $division; ?></p>
+                <p class="user-role"><?php echo $role; ?></p>
+            </div>
             <nav>
                 <?php if ($role != 'GUEST_USER'): ?>
-                    <button onclick="selectDivision()">Select Division</button>
+                    <p>Select Division Calendar:</p>
+                    <select id="select-division" onchange="selectDivision()">
+                        <option value="">All</option>
+                        <option value="FTAD">FTAD</option>
+                        <option value="PPRD">PPRD</option>
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="FINANCE">FINANCE</option>
+                        <option value="QAD">QAD</option>
+                        <option value="HRDD">HRDD</option>
+                        <option value="ORD">ORD</option>
+                        <option value="ESSD">ESSD</option>
+                        <option value="ADMIN.RECORDS">ADMIN.RECORDS</option>
+                        <option value="ADMIN.PAYROLL">ADMIN.PAYROLL</option>
+                        <option value="ADMIN.GENERAL SERVICES UNIT">ADMIN.GENERAL SERVICES UNIT</option>
+                        <option value="ADMIN.PERSONNEL">ADMIN.PERSONNEL</option>
+                        <option value="ADMIN.SUPPLY">ADMIN.SUPPLY</option>
+                        <option value="ORD.ICTU">ORD.ICTU</option>
+                        <option value="ORD.PAU">ORD.PAU</option>
+                        <option value="ORD.LU">ORD.LU</option>
+                    </select>
                     <button onclick="addEvent()">Add Event</button>
                     <button onclick="updateEvent()">Update Event</button>
                     <?php if ($role == 'SUPER_ADMIN' || $role == 'ADMIN'): ?>
@@ -44,8 +67,7 @@ $division = $_SESSION['division'] ?? 'N/A';
                     <button onclick="generateReport()">Generate Report</button>
                 <?php endif; ?>
                 <button onclick="viewPinnedEvents()">Pinned Events</button>
-                <button id="theme-toggle">Toggle Dark Mode</button>
-        </div>
+                <button id="theme-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
             </nav>
             <button onclick="logout()" class="logout-button">Logout</button>
         </div>
@@ -56,15 +78,35 @@ $division = $_SESSION['division'] ?? 'N/A';
                         <button id="prev-month" onclick="prevMonth()">&lt;</button>
                         <h1 id="calendar-month-year"></h1>
                         <button id="next-month" onclick="nextMonth()">&gt;</button>
+                        <select id="year-picker" onchange="changeYear()">
+                            <?php for ($year = 2000; $year <= date('Y'); $year++): ?>
+                                <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                        <select id="month-picker" onchange="changeMonth()">
+                            <?php for ($month = 1; $month <= 12; $month++): ?>
+                                <option value="<?php echo $month; ?>"><?php echo date('F', mktime(0, 0, 0, $month, 10)); ?></option>
+                            <?php endfor; ?>
+                        </select>
                     </div>
-                    <div class="calendar" id="calendar"></div>
+                    <div class="calendar-days">
+                        <span>Sun</span>
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                    </div>
+                    <div class="calendar" id="calendar"></div> <!-- Event days will be appended here -->
                 </div>
                 <div class="event-container">
                     <h2 id="event-title">Events</h2>
-                    <div class="event-list" id="event-list"></div>
+                    <div class="event-list" id="event-list"></div> <!-- Display upcoming events here -->
                 </div>
             </div>
         </div>
+        
     </div>
     <footer>
         <p>Department of Education - Cordillera Administrative Region &copy; <?php echo date('Y'); ?> Karu Echiji Toki. Version 1</p>
