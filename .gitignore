@@ -1,0 +1,5 @@
+# Ignore XAMPP system files
+.vscode/
+.git/
+*.log
+*.env
