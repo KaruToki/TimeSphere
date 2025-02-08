@@ -243,6 +243,7 @@ nav button:active {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    justify-content: center;
 }
 
 /* Calendar container */

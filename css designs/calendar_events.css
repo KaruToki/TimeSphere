@@ -125,6 +125,8 @@
     font-weight: bold; /* Bold font for today */
 }
 
+
+
 /* Add hover effect for the day names */
 .calendar-days span:hover {
     background-color: #e0e0e0;

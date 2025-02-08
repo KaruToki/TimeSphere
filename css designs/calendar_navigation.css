@@ -1,0 +1,57 @@
+/* Style for the previous and next month buttons */
+#prev-month, #next-month {
+    background: linear-gradient(135deg, #007BFF, #0056b3); /* Gradient background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 50px; /* Fully rounded for a modern button */
+    padding: 12px 18px; /* Slightly larger padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1.4em; /* Larger font size for modern look */
+    font-weight: 600; /* Slightly bolder font */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#prev-month:hover, #next-month:hover {
+    background: linear-gradient(135deg, #0056b3, #003c7d); /* Darker gradient on hover */
+    transform: scale(1.1); /* Slight scale effect */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Optional: Adding focus state for accessibility */
+#prev-month:focus, #next-month:focus {
+    outline: 2px solid #0056b3; /* Add outline when focused */
+    outline-offset: 5px; /* Slightly offset the outline */
+}
+
+/* Dark Mode Styles for the previous and next month buttons */
+.dark-mode #prev-month, .dark-mode #next-month {
+    background: linear-gradient(135deg, #4a90e2, #357abd); /* Softer blue gradient for dark mode */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* Light shadow in dark mode */
+}
+
+.dark-mode #prev-month:hover, .dark-mode #next-month:hover {
+    background: linear-gradient(135deg, #357abd, #2a5c91); /* Darker gradient for hover in dark mode */
+}
+
+/* Style for the calendar month-year header */
+#calendar-month-year {
+    font-size: 2em; /* Increase font size */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark text color */
+    margin: 0 20px; /* Margin on the sides */
+    text-align: center; /* Center align the text */
+    text-transform: uppercase; /* Uppercase for a more formal look */
+    letter-spacing: 1.5px; /* Add slight letter spacing for better readability */
+    padding: 15px 0; /* Padding for better alignment */
+    background-color: #f4f4f4; /* Light background for the header */
+    border-radius: 15px; /* Larger rounded corners for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for a floating effect */
+}
+
+/* Dark Mode Styles for the calendar month-year header */
+.dark-mode #calendar-month-year {
+    color: white; /* White text in dark mode */
+    background-color: #333; /* Dark background for the header */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); /* Lighter shadow for dark mode */
+}

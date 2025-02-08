@@ -21,8 +21,10 @@ $division = $_SESSION['division'] ?? 'N/A';
     <link rel="stylesheet" href="css designs/Main_Title.css"> <!-- Main title CSS -->
     <link rel="stylesheet" href="css designs/calendar_events.css"> <!-- Calendar and event styling -->
     <link rel="stylesheet" href="Styles/styles.css"> <!-- General styles -->
+    <link rel="stylesheet" href="css designs/calendar_navigation.css"> <!-- Link to the new CSS file -->
     <script src="Script Files/timesphere.js" defer></script> <!-- JS for functionality -->
     <script src="Script Files/calendar_events.js" defer></script> <!-- JS for calendar -->
+    <script src="Script Files/calendar_navigation.js" defer></script> <!-- JS for navigation -->
 </head>
 <body>
     <div class="top-bar">
@@ -76,11 +78,12 @@ $division = $_SESSION['division'] ?? 'N/A';
                 <div class="calendar-container">
                     <div class="calendar-header">
                         <button id="prev-month" onclick="prevMonth()">&lt;</button>
-                        <h1 id="calendar-month-year"></h1>
-                        <button id="next-month" onclick="nextMonth()">&gt;</button>
                         <select id="year-picker" onchange="changeYear()">
-                            <?php for ($year = 2000; $year <= date('Y'); $year++): ?>
-                                <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+                            <?php 
+                                $startYear = 2015;
+                                $endYear = 2050;
+                                for ($year = $startYear; $year <= $endYear; $year++): ?>
+                                    <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
                             <?php endfor; ?>
                         </select>
                         <select id="month-picker" onchange="changeMonth()">
@@ -88,6 +91,7 @@ $division = $_SESSION['division'] ?? 'N/A';
                                 <option value="<?php echo $month; ?>"><?php echo date('F', mktime(0, 0, 0, $month, 10)); ?></option>
                             <?php endfor; ?>
                         </select>
+                        <button id="next-month" onclick="nextMonth()">&gt;</button>
                     </div>
                     <div class="calendar-days">
                         <span>Sun</span>
@@ -106,7 +110,6 @@ $division = $_SESSION['division'] ?? 'N/A';
                 </div>
             </div>
         </div>
-        
     </div>
     <footer>
         <p>Department of Education - Cordillera Administrative Region &copy; <?php echo date('Y'); ?> Karu Echiji Toki. Version 1</p>
