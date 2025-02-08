@@ -1,0 +1,202 @@
+/* design for the login page */
+
+:root {
+    --primary-color: #007BFF;
+    --background-color: #e0e0e0;
+    --text-color: #333;
+    --border-radius: 10px;
+    --box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2; /* Ensure video is behind particles */
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure particles are behind other elements */
+}
+
+.title-container {
+    z-index: 1; /* Ensure title is above the video */
+    position: relative; /* Ensure z-index works */
+    font-family: 'Arial', sans-serif;   /* Modern sans-serif font */
+    font-size: 2.5rem;                  /* Make the title larger */
+    text-align: center;                 /* Center the title */
+    color: #000000;                        /* Dark text for contrast */
+    margin-bottom: 20px;                /* Space between the title and the icon */
+    padding: 15px 30px;                 /* Add padding for a softer effect */
+    border-radius: 15px;                /* Rounded corners */
+    background: #e0e5ec;                /* Light background for the neumorphic effect */
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7); /* Neumorphism shadow */
+    transition: all 0.3s ease;          /* Smooth transition for hover effect */
+}
+
+.title-container img {
+    width: 80px;                 /* Set the width of the image */
+    height: auto;                /* Maintain the aspect ratio */
+    margin-top: 10px;            /* Space between the title and image */
+    display: block;              /* Ensure it behaves as a block element */
+    margin-left: auto;           /* Center the image horizontally */
+    margin-right: auto; 
+}
+
+/* Add a subtle hover effect */
+.title-container h1:hover {
+    box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.1), -10px -10px 18px rgba(255, 255, 255, 0.8);
+    transform: scale(1.05); /* Slightly enlarge the title on hover */
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(0, 65, 65);
+}
+
+.animation-container {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px; /* Add space between animation and login container */
+    z-index: 1; /* Ensure animation is above the video */
+    position: relative; /* Ensure z-index works */
+}
+
+/* Neomorphism effect for the login container */
+.login-container {
+    background: #e0e0e0;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+    width: 300px;
+    text-align: center;
+    z-index: 1; /* Ensure login container is above the video */
+    position: relative; /* Ensure z-index works */
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    opacity: 1; /* Ensure form elements are visible */
+    transform: translateY(0); /* Ensure form elements are in place */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.form-group.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: none;
+    background: #e0e0e0;
+    box-shadow: inset 8px 8px 16px #bebebe, inset -8px -8px 16px #ffffff;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    box-shadow: inset 8px 8px 16px #bebebe, inset -8px -8px 16px #ffffff, 0 0 0 3px #007BFF;
+    outline: none;
+    transform: translateY(-3px); /* Add 3D transform */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff, 0 0 0 3px #007BFF;
+    transform: translateY(-3px); /* Add 3D transform */
+}
+
+.login-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.line-art {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    margin-top: 10px; /* Add space between title and illustration */
+}
+
+/* Please add all media queries here naawatam? */
+
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%; /* Make container more fluid on small screens */
+        padding: 15px;
+    }
+}
+
+body.dark-mode {
+    --background-color: #333;
+    --text-color: #fff;
+    --box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #4d4d4d;
+}
+
+body.dark-mode .login-container {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark-mode button {
+    background: var(--background-color);
+    color: var(--text-color);
+}
